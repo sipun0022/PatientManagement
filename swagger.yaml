@@ -1,0 +1,119 @@
+---
+swagger: "2.0"
+info:
+  title: "Swagger Docs"
+host: "localhost:8080"
+basePath: "/PatientManagement/api"
+tags:
+- name: "Patient Service"
+  description: "Rest end points for Patient Service"
+- name: "Patient"
+schemes:
+- "http"
+- "https"
+paths:
+  /patient/{id}:
+    get:
+      tags:
+      - "Patient"
+      operationId: "getPatient"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "successful operation"
+          headers: {}
+          schema:
+            $ref: "#/definitions/Patient"
+    post:
+      tags:
+      - "Patient"
+      operationId: "addPatient"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Patient"
+      responses:
+        200:
+          description: "successful operation"
+          headers: {}
+          schema:
+            $ref: "#/definitions/Patient"
+    delete:
+      tags:
+      - "Patient"
+      operationId: "deletePatient"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        default:
+          description: "successful operation"
+  /patient:
+    get:
+      tags:
+      - "Patient"
+      operationId: "getPatient_1"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          headers: {}
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Patient"
+  /patient/id:
+    put:
+      tags:
+      - "Patient"
+      operationId: "updatePatient"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Patient"
+      responses:
+        200:
+          description: "successful operation"
+          headers: {}
+          schema:
+            $ref: "#/definitions/Patient"
+definitions:
+  Patient:
+    type: "object"
+    properties:
+      getpId:
+        type: "integer"
+        format: "int32"
+      pname:
+        type: "string"
+      gender:
+        type: "string"
+      dob:
+        type: "string"
+        format: "date-time"
+      address:
+        type: "string"
+      active_id:
+        type: "boolean"
